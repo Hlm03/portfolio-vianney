@@ -7,13 +7,17 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #F8F8FC;
-  color: #0D0D1A;
+  background-color: #0D0D1A;
+  color: #fff;
   overflow-x: hidden;
+  font-size: 18px;
 }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-track { background: #0D0D1A; }
 ::-webkit-scrollbar-thumb { background: #FFB951; border-radius: 4px; }
 
-.section-divider { border-top: 0.5px solid #1C1C1C; }
+::selection { background: rgba(255,185,81,0.25); color: #fff; }
+
+.section-divider { border-top: 0.5px solid rgba(255,255,255,0.05); }
+

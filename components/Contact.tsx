@@ -1,17 +1,17 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Mail, Phone, ExternalLink } from 'lucide-react'
+import { Mail, Phone, ExternalLink, MessageCircle } from 'lucide-react'
 
 const contacts = [
   { href: 'mailto:hadonou03vianney@gmail.com', icon: Mail, label: 'Email', value: 'hadonou03vianney@gmail.com' },
-  { href: 'tel:+22999695755', icon: Phone, label: 'Téléphone', value: '+229 99695755 / 52534617' },
-  { href: 'https://comeup.com/fr/@vianney_hlm', icon: ExternalLink, label: 'Comeup', value: '@Vianney_Hlm · 42 avis' },
+  { href: 'tel:+22901 52534617', icon: Phone, label: 'Téléphone', value: '+229 01 52534617' },
+  { href: 'https://wa.me/22901 99695755', icon: MessageCircle, label: 'WhatsApp', value: '+229 01 99695755' },
+  { href: 'https://comeup.com/fr/@vianney-hlm', icon: ExternalLink, label: 'Comeup', value: '@Vianney_Hlm · 42 avis' },
 ]
 
 export default function Contact() {
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 flex flex-col items-center text-center relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg,#0D0D1A 0%,#1A1408 100%)' }}
       aria-label="Contact"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
@@ -28,7 +28,7 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {contacts.map((c, i) => {
             const Icon = c.icon
             return (
@@ -41,9 +41,9 @@ export default function Contact() {
                 <div className="w-9 h-9 rounded-xl bg-[#FFB951]/10 border border-[#FFB951]/20 flex items-center justify-center">
                   <Icon size={16} className="text-[#FFB951]" />
                 </div>
-                <div>
+                <div className="min-w-0 w-full">
                   <p className="text-[10px] text-white/30 uppercase tracking-wider mb-0.5">{c.label}</p>
-                  <p className="text-xs font-medium text-white/80">{c.value}</p>
+                  <p className="text-xs font-medium text-white/80 break-all leading-snug">{c.value}</p>
                 </div>
               </motion.a>
             )
