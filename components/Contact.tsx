@@ -4,8 +4,8 @@ import { Mail, Phone, ExternalLink, MessageCircle } from 'lucide-react'
 
 const contacts = [
   { href: 'mailto:hadonou03vianney@gmail.com', icon: Mail, label: 'Email', value: 'hadonou03vianney@gmail.com' },
-  { href: 'tel:+22901 52534617', icon: Phone, label: 'Téléphone', value: '+229 01 52534617' },
-  { href: 'https://wa.me/22901 99695755', icon: MessageCircle, label: 'WhatsApp', value: '+229 01 99695755' },
+  { href: 'tel:+2290152534617', icon: Phone, label: 'Téléphone', value: '+229 01 52 53 46 17' },
+  { href: 'https://wa.me/2290199695755', icon: MessageCircle, label: 'WhatsApp', value: '+229 01 99 69 57 55' },
   { href: 'https://comeup.com/fr/@vianney-hlm', icon: ExternalLink, label: 'Comeup', value: '@Vianney_Hlm · 42 avis' },
 ]
 
@@ -52,7 +52,7 @@ export default function Contact() {
       </div>
 
       <footer className="relative z-10 mt-16 pt-6 border-t border-white/5 w-full max-w-xl flex flex-col sm:flex-row justify-between items-center gap-2">
-        <p className="text-[10px] text-white/20">© 2025 H. Vianney HADONOU — Tous droits réservés</p>
+        <p className="text-[10px] text-white/20">© 2026 H. Vianney HADONOU — Tous droits réservés</p>
         <p className="text-[10px] text-white/20">Cotonou, Bénin · Designer 3D Freelance</p>
       </footer>
     </section>
