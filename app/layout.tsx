@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
 
-const BASE_URL = 'https://vianney-hadonou.vercel.app'
+const BASE_URL = 'https://portfolio-vianney.vercel.app'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
