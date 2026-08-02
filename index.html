@@ -4,20 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>H. Vianney HADONOU — Designer 3D & Graphiste | Freelance</title>
+<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
 <script>
 (async function(){
-  try{
-    const parts = await Promise.all([0,1,2].map(i => fetch('part'+i+'.txt').then(r => r.text())));
-    document.open();
-    document.write(parts.join(''));
-    document.close();
-  }catch(e){
-    document.body.innerHTML = '<p style="font-family:system-ui;padding:2rem">Chargement… <a href="https://github.com/Hlm03/portfolio-vianney">GitHub</a></p>';
-  }
+  const b64 = await fetch('site.b64z').then(r => r.text());
+  const bin = Uint8Array.from(atob(b64.trim()), c => c.charCodeAt(0));
+  const html = pako.ungzip(bin, {to:'string'});
+  document.open(); document.write(html); document.close();
 })();
 </script>
 </head>
-<body>
-<p style="font-family:system-ui;padding:2rem;color:#71717a">Chargement du portfolio…</p>
-</body>
+<body><p style="font-family:system-ui;padding:2rem;color:#71717a">Chargement du portfolio…</p></body>
 </html>
