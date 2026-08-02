@@ -3,21 +3,27 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>H. Vianney HADONOU — Designer 3D &amp; Graphiste | Freelance</title>
-<meta name="description" content="Designer 3D freelance à Cotonou. Conception 3D, animation, VFX (intégration), visualisation architecturale. 50+ projets, 4,9★ Comeup."/>
+<title>H. Vianney HADONOU — Designer 3D & Graphiste | Freelance</title>
 <meta name="theme-color" content="#0D0D1A"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin/>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<style>
-/* FULL SITE LOADED FROM ARTIFACTS - PLACEHOLDER FOR FULL CONTENT */
-</style>
+<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+<style>body{margin:0;font-family:system-ui,sans-serif;background:#0D0D1A;color:#a1a1aa;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#FFB951;margin:0 3px;animation:b 1.2s infinite ease-in-out}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes b{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}</style>
 </head>
 <body>
-<p>Loading full site... Please use the complete index from artifacts if this appears.</p>
+<div><p>Chargement du portfolio…</p><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+<script>
+(async function(){
+  try{
+    const b64 = (await fetch("site.b64z").then(r=>{if(!r.ok)throw new Error(r.status);return r.text()})).trim();
+    const bin = Uint8Array.from(atob(b64), c=>c.charCodeAt(0));
+    const html = pako.ungzip(bin,{to:"string"});
+    document.open();document.write(html);document.close();
+  }catch(e){
+    document.body.innerHTML="<p style=\"color:#f87171;padding:2rem\">Erreur: "+e.message+"</p>";
+  }
+})();
+</script>
 </body>
 </html>
