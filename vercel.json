@@ -1,9 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
+    { "src": "**", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "/site.b64z", "dest": "/site.b64z" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
