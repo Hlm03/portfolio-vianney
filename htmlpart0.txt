@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>H. Vianney HADONOU — Designer 3D &amp; Graphiste | Freelance</title>
+<meta name="description" content="Designer 3D freelance à Cotonou. Conception 3D, animation, VFX (intégration), visualisation architecturale. 50+ projets, 4,9★ Comeup."/>
+<meta name="theme-color" content="#0D0D1A"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* truncated for safety - will use full in next attempt if needed */
+body{margin:0}
+</style>
+</head>
+<body>PLACEHOLDER_PART0</body>
+</html>
