@@ -18,9 +18,9 @@ body{margin:0;font-family:system-ui,sans-serif;background:#0D0D1A;color:#a1a1aa;
 <script>
 (async function(){
   try{
-    const parts = await Promise.all([0,1,2].map(i =>
-      fetch('b64part'+i+'.txt').then(r => {
-        if (!r.ok) throw new Error('HTTP '+r.status+' (b64part'+i+')');
+    const parts = await Promise.all([0,1,2,3,4,5].map(i =>
+      fetch('p'+i+'.txt').then(r => {
+        if (!r.ok) throw new Error('HTTP '+r.status+' (p'+i+')');
         return r.text();
       })
     ));
