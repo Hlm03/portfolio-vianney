@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>H. Vianney HADONOU — Designer 3D & Graphiste | Freelance</title>
 <meta name="theme-color" content="#0D0D1A"/>
+<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
 <style>body{margin:0;font-family:system-ui,sans-serif;background:#0D0D1A;color:#a1a1aa;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#FFB951;margin:0 3px;animation:b 1.2s infinite ease-in-out}
 .dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
@@ -15,13 +16,27 @@
 <script>
 (async function(){
   try{
-    const parts = await Promise.all([0,1,2].map(i => fetch('part'+i+'.txt').then(r => {
-      if (!r.ok) throw new Error('part'+i+' missing ('+r.status+')');
-      return r.text();
-    })));
-    document.open(); document.write(parts.join('')); document.close();
+    const b64 = (await fetch("site.b64z").then(r=>{if(!r.ok)throw new Error(r.status);return r.text()})).trim();
+    const bin = Uint8Array.from(atob(b64), c=>c.charCodeAt(0));
+    let html = pako.ungzip(bin,{to:"string"});
+    // Wire ComeUp payment links on Services buttons
+    const pays = {
+      'Base': 'https://comeup.com/fr/pay/tMTv1XkRwWFo',
+      'Essentiel': 'https://comeup.com/fr/pay/gCCVNo9URUmp',
+      'Multi-produits': 'https://comeup.com/fr/pay/oyPLoTDgANm7',
+      'Haut de gamme': 'https://comeup.com/fr/pay/7jwVr7mB20sz'
+    };
+    for (const [tag, url] of Object.entries(pays)) {
+      // Replace href="#contact" on the Choisir link that follows each svc-tag
+      const re = new RegExp(
+        '(svc-tag[^>]*>' + tag.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&') + '<\\/div>[\\s\\S]*?<a href=")#contact(")',
+        'i'
+      );
+      html = html.replace(re, '$1' + url + '" target="_blank" rel="noopener$2');
+    }
+    document.open(); document.write(html); document.close();
   }catch(e){
-    document.body.innerHTML = '<p style="color:#f87171;padding:2rem">Erreur: '+e.message+'</p>';
+    document.body.innerHTML="<p style=\"color:#f87171;padding:2rem\">Erreur: "+e.message+"</p>";
   }
 })();
 </script>
