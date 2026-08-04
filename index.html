@@ -16,10 +16,11 @@
 <script>
 (async function(){
   try{
-    const b64 = (await fetch("site.b64z").then(r=>{if(!r.ok)throw new Error(r.status);return r.text()})).trim();
+    const parts = await Promise.all([0,1,2].map(i => fetch("b64part"+i+".txt").then(r=>{if(!r.ok)throw new Error(r.status);return r.text()})));
+    const b64 = parts.map(t=>t.trim()).join("");
     const bin = Uint8Array.from(atob(b64), c=>c.charCodeAt(0));
     let html = pako.ungzip(bin,{to:"string"});
-    // Wire ComeUp payment links on Services buttons
+    // Wire ComeUp payment links on Services buttons (fallback if still #contact)
     const pays = {
       'Base': 'https://comeup.com/fr/pay/tMTv1XkRwWFo',
       'Essentiel': 'https://comeup.com/fr/pay/gCCVNo9URUmp',
@@ -27,7 +28,6 @@
       'Haut de gamme': 'https://comeup.com/fr/pay/7jwVr7mB20sz'
     };
     for (const [tag, url] of Object.entries(pays)) {
-      // Replace href="#contact" on the Choisir link that follows each svc-tag
       const re = new RegExp(
         '(svc-tag[^>]*>' + tag.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&') + '<\\/div>[\\s\\S]*?<a href=")#contact(")',
         'i'
