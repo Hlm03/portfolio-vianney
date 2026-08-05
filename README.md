@@ -1,33 +1,17 @@
-# Portfolio — H. Vianney HADONOU
+# Portfolio Vianney — Designer 3D & Graphiste
 
-Designer 3D & Graphiste | Freelance · Cotonou, Bénin
-
-## Site
-
-Portfolio one-page statique (`index.html`).
-
-- Hero, stats, projets (modal + Drive)
-- Services / tarifs ComeUp
-- Process, skills, avis
-- Contact (Formspree + WhatsApp + Comeup)
+Site statique (HTML/CSS/JS monolithe).
 
 ## Déploiement Vercel
 
-1. Projet lié à ce repo
-2. Framework preset : **Other** (ou Static)
-3. Build command : *(vide)*
-4. Output directory : `.`
+1. Framework Preset: **Other**
+2. Build Command: *(vide)*
+3. Output Directory: `.`
+4. Deploy
 
-Ou laisser `vercel.json` gérer le build statique.
+## Liens paiement Services
 
-## Local
-
-Ouvrir `index.html` dans le navigateur, ou :
-
-```bash
-npx serve .
-```
-
-## Formulaire
-
-Formspree : `https://formspree.io/f/mrenwdby`
+- Base: https://comeup.com/fr/pay/tMTv1XkRwWFo
+- Essentiel: https://comeup.com/fr/pay/gCCVNo9URUmp
+- Multi-produits: https://comeup.com/fr/pay/oyPLoTDgANm7
+- Haut de gamme: https://comeup.com/fr/pay/7jwVr7mB20sz
