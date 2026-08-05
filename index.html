@@ -3,39 +3,652 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>H. Vianney HADONOU — Designer 3D & Graphiste | Freelance</title>
+<title>H. Vianney HADONOU — Designer 3D &amp; Graphiste | Freelance</title>
+<meta name="description" content="Designer 3D freelance à Cotonou. Conception 3D, animation, VFX (intégration), visualisation architecturale. 50+ projets, 4,9★ Comeup."/>
 <meta name="theme-color" content="#0D0D1A"/>
-<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
-<style>
-body{margin:0;font-family:system-ui,sans-serif;background:#0D0D1A;color:#a1a1aa;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#FFB951;margin:0 3px;animation:b 1.2s infinite ease-in-out}
-.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
-@keyframes b{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
-<div><p>Chargement du portfolio…</p><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
-<script>
-(async function(){
-  try{
-    const parts = await Promise.all([0,1,2,3,4,5].map(i =>
-      fetch('p'+i+'.txt').then(r => {
-        if (!r.ok) throw new Error('HTTP '+r.status+' (p'+i+')');
-        return r.text();
-      })
-    ));
-    const b64 = parts.map(t => t.trim()).join('');
-    if (b64.length < 20000) throw new Error('Payload trop court ('+b64.length+' car.)');
-    const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
-    const html = pako.ungzip(bin, {to:'string'});
-    if (!html || html.length < 10000) throw new Error('Décompression invalide');
-    document.open();
-    document.write(html);
-    document.close();
-  } catch(e) {
-    document.body.innerHTML = '<p style="color:#f87171;padding:2rem">Erreur: '+e.message+'</p>';
-  }
-})();
-</script>
+
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20200%2048%22%20fill%3D%22none%22%3E%0A%20%20%3Ctext%20x%3D%220%22%20y%3D%2234%22%20font-family%3D%22system-ui%2Csans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2228%22%20fill%3D%22%23FFB951%22%3EHlm%3C/text%3E%0A%20%20%3Ctext%20x%3D%2270%22%20y%3D%2234%22%20font-family%3D%22system-ui%2Csans-serif%22%20font-weight%3D%22600%22%20font-size%3D%2218%22%20fill%3D%22%23fff%22%3EDESIGN%3C/text%3E%0A%3C/svg%3E" alt="Hlm DESIGN" class="logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta btn-magnet btn-ripple">Me contacter</a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#portfolio">Portfolio</a>
+  <a href="#services">Services</a>
+  <a href="#skills">Compétences</a>
+  <a href="#process">Process</a>
+  <a href="#avis">Avis</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero spotlight-zone" id="hero">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+  <div class="hero-glow left"></div>
+  <div class="hero-glow right"></div>
+  <div class="clients-badge">
+    <div class="avatars"><span>FG</span><span>Z</span><span>TD</span><span>AL</span><span>KF</span></div>
+    <p>+50 clients accompagnés</p>
+  </div>
+  <h1>Je crée des visuels 3D<br/>qui donnent <span class="accent">vie</span> à vos projets.</h1>
+  <p class="hero-sub">Conception 3D · Animation · VFX · Archi Viz<br/><span style="opacity:.55">Freelance depuis 2021, basé au Bénin · FR · EN</span></p>
+  <a href="#portfolio" class="btn-accent btn-magnet btn-ripple">Voir mes projets →</a>
+  <p class="stats-label">Les chiffres</p>
+  <p class="stats-heading">Vue globale</p>
+  <div class="stats-row">
+    <div class="stat-card"><div class="val" data-target="50" data-prefix="+">+50</div><div class="lbl">Projets réalisés</div></div>
+    <div class="stat-card"><div class="val" data-target="40" data-prefix="+">+40</div><div class="lbl">Clients satisfaits</div></div>
+    <div class="stat-card"><div class="val" data-target="5" data-prefix="+">+5</div><div class="lbl">Années d'expérience</div></div>
+    <div class="stat-card"><div class="val" data-target="4.9" data-suffix="★" data-decimal="1">4,9★</div><div class="lbl">Note Comeup</div></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section section-white spotlight-zone" id="portfolio">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="portfolio-header reveal">
+      <div>
+        <p class="eyebrow-s">Portfolio</p>
+        <h2 class="section-title">Consultez mes projets ici</h2>
+      </div>
+    </div>
+    <div class="filter-bar" id="filterBar">
+      <span class="pill" id="filterPill"></span>
+      <button type="button" class="filter-btn active" data-filter="all">Tous</button>
+      <button type="button" class="filter-btn" data-filter="produit">Design 3D Produit</button>
+      <button type="button" class="filter-btn" data-filter="archi">Archi Viz</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+<article role="button" tabindex="0" class="project-card reveal delay-1" data-cat="produit" data-title="Saphir Solaire" data-desc="Conception 3D d'une solution énergie solaire fabriquée en France." data-img="https://lh3.googleusercontent.com/d/15zjqMV4m_Sopy1vW3zewARvbb7nrJCPW" data-badge="Design 3D" data-tools="Blender|Substance" data-drive="https://drive.google.com/open?id=1KanFf1zeJj1CVHCWLx22ltFGUQCf9ap">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/15zjqMV4m_Sopy1vW3zewARvbb7nrJCPW" alt="Saphir Solaire" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Saphir Solaire</h3>
+          <p>Conception 3D d'une solution énergie solaire fabriquée en France.</p>
+          <div class="project-tools"><span>Blender</span><span>Substance</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card reveal delay-2" data-cat="produit" data-title="Générateur de Fréquence" data-desc="Modélisation technique et animation d'un boîtier électronique industriel." data-img="https://lh3.googleusercontent.com/d/1WeCLcflgVmng-Kc_MrmPVccFh86jw7zU" data-badge="Design 3D" data-tools="Blender|Substance" data-drive="https://drive.google.com/open?id=1G7JznlN5IbwVFpwYmsRQpJj7saA2z0hT">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1WeCLcflgVmng-Kc_MrmPVccFh86jw7zU" alt="Générateur de Fréquence" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Générateur de Fréquence</h3>
+          <p>Modélisation technique et animation d'un boîtier électronique industriel.</p>
+          <div class="project-tools"><span>Blender</span><span>Substance</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card reveal delay-3" data-cat="produit" data-title="Anatomie — Cœur" data-desc="Textures 3D réalistes d'organes pour visualisations médicales." data-img="https://lh3.googleusercontent.com/d/180ofeK272DdDLeKkvnlZ56LLz4gk_WpZ" data-badge="Design 3D" data-tools="Blender|Substance" data-drive="https://drive.google.com/drive/folders/1a4cXrYIR9YyY3Pc_TUzjg92_phVoEdb3?usp=drive_link">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/180ofeK272DdDLeKkvnlZ56LLz4gk_WpZ" alt="Anatomie — Cœur" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Anatomie — Cœur</h3>
+          <p>Textures 3D réalistes d'organes pour visualisations médicales.</p>
+          <div class="project-tools"><span>Blender</span><span>Substance</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card reveal delay-4" data-cat="archi" data-title="Immeuble Location" data-desc="Bâtiment collectif R+3 destiné à la location." data-img="https://lh3.googleusercontent.com/d/1j4k52p8Vr_A0-DFYda4lMCa0D-ZwXR4m" data-badge="Archi Viz" data-tools="Blender|SketchUp" data-drive="https://drive.google.com/open?id=1dFBEOpP8gMceddkdlqKk77lwFC7latu1">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1j4k52p8Vr_A0-DFYda4lMCa0D-ZwXR4m" alt="Immeuble Location" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Archi Viz</span>
+        </div>
+        <div class="project-info">
+          <h3>Immeuble Location</h3>
+          <p>Bâtiment collectif R+3 destiné à la location.</p>
+          <div class="project-tools"><span>Blender</span><span>SketchUp</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-1" data-cat="produit" data-title="Épice" data-desc="Packaging et animation publicitaire pour une gamme d'épices locales." data-img="https://lh3.googleusercontent.com/d/1OP0_fW-32NoS6XaQ_ipB1VMw8_sE7niz" data-badge="Design 3D" data-tools="Blender|After Effects" data-drive="https://drive.google.com/open?id=1MPIx3DNXsv46UmMVrjOXIAOjLSLZKHmN">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1OP0_fW-32NoS6XaQ_ipB1VMw8_sE7niz" alt="Épice" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Épice</h3>
+          <p>Packaging et animation publicitaire pour une gamme d'épices locales.</p>
+          <div class="project-tools"><span>Blender</span><span>After Effects</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-2" data-cat="produit" data-title="Eau Naturelle" data-desc="Conception et animation publicitaire autour de contenants d'eau naturelle." data-img="https://lh3.googleusercontent.com/d/1YJt--SU2T7lgV-oi0lmEC6r2_iXkq8qH" data-badge="Design 3D" data-tools="Blender|After Effects" data-drive="https://drive.google.com/open?id=19jyD14M0sRZzLGqnMXLmeKvVB7R6qDeQ">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1YJt--SU2T7lgV-oi0lmEC6r2_iXkq8qH" alt="Eau Naturelle" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Eau Naturelle</h3>
+          <p>Conception et animation publicitaire autour de contenants d'eau naturelle.</p>
+          <div class="project-tools"><span>Blender</span><span>After Effects</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-3" data-cat="produit" data-title="Globe" data-desc="Création et animation d'un globe exprimant les échanges internationaux." data-img="https://lh3.googleusercontent.com/d/1C5s4cdy0gwOytJzOS_Eua2ZW-l-k1wq5" data-badge="Design 3D" data-tools="Blender|After Effects" data-drive="https://drive.google.com/open?id=1-NNed7scEzEiD8IZGoRnZKQYx1pdJ6hu">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1C5s4cdy0gwOytJzOS_Eua2ZW-l-k1wq5" alt="Globe" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Globe</h3>
+          <p>Création et animation d'un globe exprimant les échanges internationaux.</p>
+          <div class="project-tools"><span>Blender</span><span>After Effects</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-4" data-cat="produit" data-title="Redbull" data-desc="Rendu publicitaire et modélisation 3D de canettes Redbull." data-img="https://lh3.googleusercontent.com/d/1bEbQoo0TCpHQ6ripPckMHPCEPObdKNxy" data-badge="Design 3D" data-tools="Blender|Substance" data-drive="https://drive.google.com/open?id=1q2ZfC38oMVqJMhu3_zV8CIz88OfvWbgw">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1bEbQoo0TCpHQ6ripPckMHPCEPObdKNxy" alt="Redbull" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Redbull</h3>
+          <p>Rendu publicitaire et modélisation 3D de canettes Redbull.</p>
+          <div class="project-tools"><span>Blender</span><span>Substance</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-1" data-cat="produit" data-title="COZIYA" data-desc="Design et animation pour la marque / concept COZIYA." data-img="https://lh3.googleusercontent.com/d/1oau1eNbNAtPm0vGOn_i-f6RLVgWZpCOh" data-badge="Design 3D" data-tools="Blender|After Effects" data-drive="https://drive.google.com/open?id=1px0JTmcU7yDfvkSt3al79kdicT31AdX3">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1oau1eNbNAtPm0vGOn_i-f6RLVgWZpCOh" alt="COZIYA" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>COZIYA</h3>
+          <p>Design et animation pour la marque / concept COZIYA.</p>
+          <div class="project-tools"><span>Blender</span><span>After Effects</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-2" data-cat="produit" data-title="Diagral" data-desc="Conception et présentation de dispositifs de sécurité Diagral." data-img="https://lh3.googleusercontent.com/d/1AHr1AoJAqT5Q5fuBpwD_EyEW2NKzj_Qf" data-badge="Design 3D" data-tools="Blender|Substance" data-drive="https://drive.google.com/open?id=1m2lj9ssThOMnS9rHLOetX5_JiyWHI0u">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1AHr1AoJAqT5Q5fuBpwD_EyEW2NKzj_Qf" alt="Diagral" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Diagral</h3>
+          <p>Conception et présentation de dispositifs de sécurité Diagral.</p>
+          <div class="project-tools"><span>Blender</span><span>Substance</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-3" data-cat="produit" data-title="Spray & Dermaplaner" data-desc="Design produit pour outils de soin de la peau." data-img="https://lh3.googleusercontent.com/d/1Fhk1o6pHBXp7diE2JRDdu2Nez1tcdV-r" data-badge="Design 3D" data-tools="Blender|Substance" data-drive="https://drive.google.com/open?id=1s926dGFXKKkZHAyKtwbnz6qM4mXL_nF">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1Fhk1o6pHBXp7diE2JRDdu2Nez1tcdV-r" alt="Spray & Dermaplaner" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Spray & Dermaplaner</h3>
+          <p>Design produit pour outils de soin de la peau.</p>
+          <div class="project-tools"><span>Blender</span><span>Substance</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-4" data-cat="produit" data-title="Bitcoin" data-desc="Modélisation 3D de jetons et objets dérivés autour du Bitcoin." data-img="https://lh3.googleusercontent.com/d/1RbnynjSdYfwuVGmECXHQyEgkqCRusga9" data-badge="Design 3D" data-tools="Blender|Substance" data-drive="https://drive.google.com/open?id=1Ejl2CeA2zG6YBc5S9NLK0nGxjlfXhE_F">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1RbnynjSdYfwuVGmECXHQyEgkqCRusga9" alt="Bitcoin" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Design 3D</span>
+        </div>
+        <div class="project-info">
+          <h3>Bitcoin</h3>
+          <p>Modélisation 3D de jetons et objets dérivés autour du Bitcoin.</p>
+          <div class="project-tools"><span>Blender</span><span>Substance</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-1" data-cat="archi" data-title="Home_1" data-desc="Villa contemporaine — larges ouvertures et circulation intérieure." data-img="https://lh3.googleusercontent.com/d/11iQE5YKA3E2P9IUy0lQY1TgAIABMEXC5" data-badge="Archi Viz" data-tools="Blender|SketchUp" data-drive="https://drive.google.com/open?id=1yOsmkvLAp5U3vchrgekQ9cqDosWzPPJ">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/11iQE5YKA3E2P9IUy0lQY1TgAIABMEXC5" alt="Home_1" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Archi Viz</span>
+        </div>
+        <div class="project-info">
+          <h3>Home_1</h3>
+          <p>Villa contemporaine — larges ouvertures et circulation intérieure.</p>
+          <div class="project-tools"><span>Blender</span><span>SketchUp</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-2" data-cat="archi" data-title="Canal Olympia" data-desc="Étude spatiale événementielle — flux, parvis et volumétrie." data-img="https://lh3.googleusercontent.com/d/1jM8iqMJRnZY4uGktQkbB-YVEVwWtdQvr" data-badge="Archi Viz" data-tools="Blender|SketchUp" data-drive="https://drive.google.com/open?id=1Yz7_HH2SdB2t7vzcJ6LVCbUqyzcgLiUj">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1jM8iqMJRnZY4uGktQkbB-YVEVwWtdQvr" alt="Canal Olympia" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Archi Viz</span>
+        </div>
+        <div class="project-info">
+          <h3>Canal Olympia</h3>
+          <p>Étude spatiale événementielle — flux, parvis et volumétrie.</p>
+          <div class="project-tools"><span>Blender</span><span>SketchUp</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-3" data-cat="archi" data-title="Home_2" data-desc="Projet résidentiel — matériaux bois/pierre et volumétrie alternative." data-img="https://lh3.googleusercontent.com/d/1FnJgL4Io0AdDT6_EGhro93SORq3VkyFk" data-badge="Archi Viz" data-tools="Blender|SketchUp" data-drive="https://drive.google.com/open?id=1Jaj9xfpdO4MuBMrAa8tv83Cpi4iQYHFF">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1FnJgL4Io0AdDT6_EGhro93SORq3VkyFk" alt="Home_2" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Archi Viz</span>
+        </div>
+        <div class="project-info">
+          <h3>Home_2</h3>
+          <p>Projet résidentiel — matériaux bois/pierre et volumétrie alternative.</p>
+          <div class="project-tools"><span>Blender</span><span>SketchUp</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-4" data-cat="archi" data-title="Environnement 1" data-desc="Environnement extérieur — végétation, chemins et éclairage public." data-img="https://lh3.googleusercontent.com/d/1CoyfzBZBlFdUfZGz0SUpoOUTrW8vhbIY" data-badge="Archi Viz" data-tools="Blender|SketchUp" data-drive="https://drive.google.com/open?id=1OdF1IIWrxeZBLoNy6IIPMozpNul93Mom">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1CoyfzBZBlFdUfZGz0SUpoOUTrW8vhbIY" alt="Environnement 1" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Archi Viz</span>
+        </div>
+        <div class="project-info">
+          <h3>Environnement 1</h3>
+          <p>Environnement extérieur — végétation, chemins et éclairage public.</p>
+          <div class="project-tools"><span>Blender</span><span>SketchUp</span></div>
+        </div>
+      
+      </article>
+<article role="button" tabindex="0" class="project-card is-hidden reveal delay-1" data-cat="archi" data-title="Design Entrée Séjour" data-desc="Aménagement intérieur — espace d'accueil et salle de séjour." data-img="https://lh3.googleusercontent.com/d/1jt0TIXBCESBA3G-zepbK-AE4aMK0mieh" data-badge="Archi Viz" data-tools="Blender|SketchUp" data-drive="https://drive.google.com/open?id=1dZSC3pUIVmugNVYJZDarKJxzUTJtSUHh">
+
+        <div class="project-visual">
+          <img src="https://lh3.googleusercontent.com/d/1jt0TIXBCESBA3G-zepbK-AE4aMK0mieh" alt="Design Entrée Séjour" loading="lazy" onerror="this.style.opacity='0'"/>
+          <span class="project-badge">Archi Viz</span>
+        </div>
+        <div class="project-info">
+          <h3>Design Entrée Séjour</h3>
+          <p>Aménagement intérieur — espace d'accueil et salle de séjour.</p>
+          <div class="project-tools"><span>Blender</span><span>SketchUp</span></div>
+        </div>
+      
+      </article>
+    </div>
+
+    <div class="projects-more">
+      <button type="button" class="btn-more" id="btnMoreProjects">Voir plus de projets</button>
+    </div>
+
+    <div class="section-cta reveal">
+      <div class="cta-copy">
+        <h3>Un projet en tête ?</h3>
+        <p>Parlons-en et voyons comment le concrétiser en 3D.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#contact" class="btn-accent btn-magnet btn-ripple">Démarrer un projet</a>
+        <a href="#process" class="btn-outline-dark">Voir mon process</a>
+      </div>
+    </div>
+
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-row"><span class="ticker-item mist">Modélisation 3D</span><span class="ticker-item peach">Animation</span><span class="ticker-item peach">VFX</span><span class="ticker-item peach">Archi Viz</span><span class="ticker-item peach">Texturing</span><span class="ticker-item mist">Rendu</span><span class="ticker-item mist">Modélisation 3D</span><span class="ticker-item peach">Animation</span><span class="ticker-item peach">VFX</span><span class="ticker-item peach">Archi Viz</span><span class="ticker-item peach">Texturing</span><span class="ticker-item mist">Rendu</span></div>
+  <div class="ticker-row reverse"><span class="ticker-item soft-white">Blender</span><span class="ticker-item peach">Motion design</span><span class="ticker-item peach">Produit 3D</span><span class="ticker-item peach">Substance</span><span class="ticker-item peach">Éclairage</span><span class="ticker-item mist">Prototypage</span><span class="ticker-item soft-white">Blender</span><span class="ticker-item peach">Motion design</span><span class="ticker-item peach">Produit 3D</span><span class="ticker-item peach">Substance</span><span class="ticker-item peach">Éclairage</span><span class="ticker-item mist">Prototypage</span></div>
+</div>
+
+<!-- SKILLS -->
+<section class="section section-light spotlight-zone" id="skills">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="skills-title reveal">
+      <p class="eyebrow-s">Skills</p>
+      <h2 class="section-title">Je vous apporte</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card accent reveal">
+        <div class="skill-head">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path class="s" d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path class="p" d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="none"/><path class="p" d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>
+          <span>Une expertise en :</span>
+        </div>
+        <ul>
+          <li>Design 3D objet &amp; produit</li>
+          <li>Animation publicitaire 3D</li>
+          <li>VFX — intégration 3D dans des prises réelles</li>
+          <li>Visualisation architecturale</li>
+          <li>Texturing &amp; rendu</li>
+          <li>Design graphique &amp; UI/UX</li>
+        </ul>
+      </div>
+      <div class="skill-card black reveal">
+        <div class="skill-head">
+          <svg class="icon-svg" viewBox="0 0 24 24"><circle class="s" cx="9" cy="8" r="3"/><path class="s" d="M3 18a6 6 0 0112 0"/><circle class="p" cx="9" cy="8" r="3" fill="none"/><path class="p" d="M3 18a6 6 0 0112 0" fill="none"/><circle class="p" cx="17" cy="9" r="2.5" fill="none"/><path class="p" d="M17 13.5a4.5 4.5 0 014 4.5"/></svg>
+          <span>Des soft skills</span>
+        </div>
+        <ul>
+          <li>Écoute &amp; communication</li>
+          <li>Réactivité</li>
+          <li>Attention au détail</li>
+          <li>Adaptabilité</li>
+          <li>Créativité</li>
+          <li>Esprit collaboratif</li>
+        </ul>
+      </div>
+      <div class="skill-card dark-orange reveal">
+        <div class="skill-head">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path class="s" d="M14.5 4.5l5 5-9 9H5.5v-5l9-9z"/><path class="p" d="M14.5 4.5l5 5-9 9H5.5v-5l9-9z" fill="none"/><path class="p" d="M12 7l5 5"/></svg>
+          <span>Une maîtrise de :</span>
+        </div>
+        <ul>
+          <li>Blender</li>
+          <li>Substance 3D Painter</li>
+          <li>Unity</li>
+          <li>SketchUp</li>
+          <li>After Effects · Photoshop</li>
+          <li>Figma · Illustrator</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-cta reveal">
+      <div class="cta-copy">
+        <h3>Vous avez une idée ?</h3>
+        <p>Concrétisons-la ensemble.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#contact" class="btn-accent btn-magnet btn-ripple">Me contacter</a>
+        <a href="#avis" class="btn-outline-dark">Voir les avis</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section spotlight-zone" id="services">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="services-title reveal">
+      <p class="eyebrow-s">Services</p>
+      <h2 class="section-title">Des offres claires pour vos projets 3D</h2>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card reveal delay-1">
+        <div class="svc-tag">Base</div>
+        <h3>Base</h3>
+        <div class="svc-price">25€ <span>/ projet</span></div>
+        <ul>
+          <li>Modélisation d'un objet simple</li>
+          <li>Texture avancée</li>
+          <li>4 images HD (angles variés)</li>
+          <li>1 retouche incluse</li>
+          <li>Livraison en 3 jours</li>
+        </ul>
+        <a href="https://comeup.com/fr/pay/tMTv1XkRwWFo" target="_blank" rel="noopener" class="btn-outline-dark">Choisir</a>
+      </div>
+      <div class="service-card featured reveal delay-2">
+        <div class="svc-tag">Essentiel</div>
+        <h3>Présentation</h3>
+        <div class="svc-price">60€ <span>/ projet</span></div>
+        <ul>
+          <li>Modélisation simple</li>
+          <li>Texture avancée</li>
+          <li>4 images HD (angles variés)</li>
+          <li>Vidéo 360° (10 sec)</li>
+          <li>1 retouche incluse</li>
+        </ul>
+        <a href="https://comeup.com/fr/pay/gCCVNo9URUmp" target="_blank" rel="noopener" class="btn-accent btn-magnet btn-ripple" style="display:inline-flex;align-items:center;justify-content:center;width:100%;height:44px;margin:0">Choisir</a>
+      </div>
+      <div class="service-card reveal delay-3">
+        <div class="svc-tag">Multi-produits</div>
+        <h3>Cosmétique</h3>
+        <div class="svc-price">95€ <span>/ 3 produits</span></div>
+        <ul>
+          <li>Modélisation de 3 produits</li>
+          <li>Texture avancée (logos, finitions)</li>
+          <li>1 rendu HD par produit</li>
+          <li>1 retouche incluse</li>
+          <li>Idéal e-commerce / beauté</li>
+        </ul>
+        <a href="https://comeup.com/fr/pay/oyPLoTDgANm7" target="_blank" rel="noopener" class="btn-outline-dark">Choisir</a>
+      </div>
+      <div class="service-card featured reveal delay-4">
+        <div class="svc-tag">Haut de gamme</div>
+        <h3>Premium</h3>
+        <div class="svc-price">160€ <span>/ projet</span></div>
+        <ul>
+          <li>Modélisation complexe</li>
+          <li>Texture avancée</li>
+          <li>Animation 45s Full HD</li>
+          <li>2 retouches incluses</li>
+          <li>Rendu publicitaire pro</li>
+        </ul>
+        <a href="https://comeup.com/fr/pay/7jwVr7mB20sz" target="_blank" rel="noopener" class="btn-accent btn-magnet btn-ripple" style="display:inline-flex;align-items:center;justify-content:center;width:100%;height:44px;margin:0">Choisir</a>
+      </div>
+    </div>
+
+    <p class="reveal" style="text-align:center;margin-top:1.5rem;font-size:.85rem;color:#71717a">Options à la carte (4K, animation 10s, modélisation complexe…) sur devis — aussi sur <a href="https://comeup.com/fr/@vianney-hlm" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:600">Comeup</a></p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section spotlight-zone" id="process">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+  <div class="process-pin" id="processPin">
+    <div class="process-title">
+      <p class="eyebrow-s">Process</p>
+      <h2 class="section-title">Comment je travaille ?</h2>
+    </div>
+    <div class="process-board" id="processBoard">
+      <svg class="process-line" viewBox="0 0 900 720" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M 220 110 C 420 105, 500 115, 680 120 C 620 200, 320 270, 220 340 C 360 315, 540 315, 680 340 C 620 420, 500 510, 400 555"/>
+      </svg>
+      <article class="process-note" data-i="0">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="note-body">
+          <div class="note-num">01</div>
+          <h4>Brief &amp; besoins</h4>
+          <p>On clarifie vos objectifs, références et contraintes pour cadrer le projet 3D.</p>
+        </div>
+      </article>
+      <article class="process-note" data-i="1">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="note-body">
+          <div class="note-num">02</div>
+          <h4>Concept &amp; direction</h4>
+          <p>Proposition de direction artistique et de solutions techniques adaptées.</p>
+        </div>
+      </article>
+      <article class="process-note" data-i="2">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="note-body">
+          <div class="note-num">03</div>
+          <h4>Modélisation</h4>
+          <p>Création 3D, texturing et éclairage selon le brief validé.</p>
+        </div>
+      </article>
+      <article class="process-note" data-i="3">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="note-body">
+          <div class="note-num">04</div>
+          <h4>Rendu &amp; animation</h4>
+          <p>Production des images ou animations finales en haute qualité.</p>
+        </div>
+      </article>
+      <article class="process-note" data-i="4">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="note-body">
+          <div class="note-num">05</div>
+          <h4>Livraison &amp; itérations</h4>
+          <p>Révisions, export et transmission des fichiers finaux prêts à l'emploi.</p>
+        </div>
+      </article>
+    </div>
+    <div class="process-cta" id="processCta">
+      <a href="#contact" class="btn-accent btn-magnet btn-ripple">Parlez-moi de votre projet</a>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="section section-light spotlight-zone" id="avis">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="reviews-title reveal">
+      <p class="eyebrow-s">Avis clients</p>
+      <h2 class="section-title">Ils ont été satisfaits</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal delay-1">
+        <div class="review-head"><div class="review-av">FG</div><div><div class="review-name">FrancoisGamet</div><div class="review-role">Client Comeup</div></div></div>
+        <p class="review-text">Un travail d'une qualité exceptionnelle et au dessus de mes attentes. Professionnel à l'écoute et très réactif. Merci beaucoup Vianney</p>
+        <p class="review-reco">Je recommande sans hésiter.</p>
+      </div>
+      <div class="review-card reveal delay-2">
+        <div class="review-head"><div class="review-av">Z</div><div><div class="review-name">zebul</div><div class="review-role">Client Comeup</div></div></div>
+        <p class="review-text">Merci infiniment pour votre professionnalisme, votre patience et votre écoute ! Superbes propositions. La vidéo est superbe, un travail de pro.</p>
+        <p class="review-reco">Je recommande à 100%.</p>
+      </div>
+      <div class="review-card reveal delay-3">
+        <div class="review-head"><div class="review-av">TD</div><div><div class="review-name">Tinydev</div><div class="review-role">Client Comeup</div></div></div>
+        <p class="review-text">Très satisfaits, commande livrée très rapidement. Vendeur réactif, créatif et travail soigné. De très jolies représentations 3D.</p>
+        <p class="review-reco">Je recommande vivement.</p>
+      </div>
+      <div class="review-card reveal delay-4">
+        <div class="review-head"><div class="review-av">AL</div><div><div class="review-name">alex83210</div><div class="review-role">Client Comeup</div></div></div>
+        <p class="review-text">Le rendu 3D est de très haute qualité, avec une attention parfaite aux détails. Le résultat final dépasse mes attentes.</p>
+        <p class="review-reco">Je recommande ce service.</p>
+      </div>
+      <div class="review-card reveal delay-5">
+        <div class="review-head"><div class="review-av">KF</div><div><div class="review-name">Kf_Diffusion</div><div class="review-role">Client Comeup</div></div></div>
+        <p class="review-text">Vianney a réalisé un rendu top ! Top rendu 3D !! Impeccable !! Je suis pleinement satisfait.</p>
+        <p class="review-reco">Rendu impeccable.</p>
+      </div>
+      <div class="review-card reveal delay-6">
+        <div class="review-head"><div class="review-av">TD</div><div><div class="review-name">Tinydev</div><div class="review-role">Client Comeup</div></div></div>
+        <p class="review-text">Personne très sérieuse, à l'écoute, respectueuse, gentille et très soucieuse du détail. Je recommande à 100%.</p>
+        <p class="review-reco">À 100%.</p>
+      </div>
+    </div>
+    <div class="reviews-cta reveal">
+      <a href="#contact" class="btn-accent btn-magnet btn-ripple">Devenez l'un d'eux !</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section spotlight-zone" id="contact">
+  <div class="spotlight-glow" aria-hidden="true"></div>
+  <div class="contact-glow"></div>
+  <div class="container">
+    <div class="contact-header reveal">
+      <div class="eyebrow" style="margin-bottom:1rem">✦ Et vous ?</div>
+      <h2>Votre projet mérite<br/><span class="accent">d'exister en 3D.</span></h2>
+      <p>Décrivez-moi votre besoin en quelques mots. Je vous réponds sous 12 h avec une première piste concrète, sans engagement.</p>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-form-card reveal">
+        <h3>Envoyez-moi un message maintenant.</h3>
+        <form id="contactForm" action="https://formspree.io/f/mrenwdby" method="POST">
+          <input type="hidden" name="_subject" value="Nouveau message — Portfolio Vianney"/>
+          <div class="field">
+            <label for="cf-name">Prénom</label>
+            <input id="cf-name" name="name" type="text" placeholder="Votre prénom" required autocomplete="given-name"/>
+          </div>
+          <div class="field">
+            <label for="cf-email">Adresse mail</label>
+            <input id="cf-email" name="email" type="email" placeholder="vous@email.com" required autocomplete="email"/>
+          </div>
+          <div class="field">
+            <label for="cf-msg">Comment puis-je vous aider ?</label>
+            <textarea id="cf-msg" name="message" placeholder="Type de projet, délais, références…" required></textarea>
+          </div>
+          <button type="submit" class="btn-send" id="cf-submit">Envoyer un message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+        </form>
+      </div>
+      <div class="contact-side reveal delay-2">
+        <h3>Ou contactez-moi directement.</h3>
+        <div class="side-actions">
+          <a class="side-btn wa" href="https://wa.me/2290199695755?text=Bonjour%20Vianney%2C%20je%20souhaite%20discuter%20d%27un%20projet%203D%20avec%20vous." target="_blank" rel="noopener">WhatsApp — message prêt</a>
+          <a class="side-btn comeup" href="https://comeup.com/fr/@vianney-hlm" target="_blank" rel="noopener">Comeup — me laisser un message</a>
+        </div>
+        <div class="avail"><i></i> Disponible pour de nouveaux projets</div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>© 2026 H. Vianney HADONOU — Tous droits réservés</p>
+      <p>Cotonou, Bénin · Designer 3D &amp; Graphiste · FR · EN</p>
+    </footer>
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="project-modal" id="projectModal" aria-hidden="true">
+  <div class="project-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="project-modal-top">
+      <button type="button" class="modal-back" id="modalClose"><span aria-hidden="true">←</span> Retour</button>
+    </div>
+    <div class="project-modal-scroll">
+      <div class="project-modal-layout">
+        <div class="project-modal-visual">
+          <img id="modalImg" src="" alt=""/>
+        </div>
+        <div class="project-modal-content">
+          <div class="badge" id="modalBadge"></div>
+          <h3 id="modalTitle"></h3>
+          <p class="lead" id="modalDesc"></p>
+          <div class="block-title">Outils utilisés</div>
+          <div class="project-modal-tools" id="modalTools"></div>
+          <div class="block-title">Livrables &amp; accès</div>
+          <p class="lead" style="margin-bottom:0;font-size:.88rem">Les rendus complets, angles supplémentaires et fichiers de présentation sont disponibles sur Google Drive.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-modal-foot">
+      <div class="nav-btns">
+        <button type="button" class="nav-btn" id="modalPrev">← Précédent</button>
+        <button type="button" class="nav-btn" id="modalNext">Suivant →</button>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+        <a href="#" target="_blank" rel="noopener" class="btn-drive" id="modalDrive">Voir sur Drive ↗</a>
+        <a href="#contact" class="btn-accent" id="modalContact">Discutons de votre projet</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Email copié dans le presse-papiers</div>
+
+<script src="js/main.js"></script>
 </body>
 </html>
